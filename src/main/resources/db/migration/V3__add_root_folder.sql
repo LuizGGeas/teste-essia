@@ -1,0 +1,1 @@
+INSERT INTO folder (name) values ('root')
