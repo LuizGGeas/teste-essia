@@ -16,7 +16,7 @@ USER gradleuser
 
 RUN chmod +x gradlew
 
-RUN ./gradlew build --no-daemon --info
+RUN ./gradlew build --no-daemon
 
 FROM openjdk:21-jdk-slim
 WORKDIR /app
