@@ -14,6 +14,11 @@ import java.util.Objects;
 public class FolderServiceImpl extends AbstractServiceImpl<FolderRepository, Folder> implements FolderService {
 
     @Override
+    public Folder getRootFolder() {
+        return repository.getFolderByName("root");
+    }
+
+    @Override
     public Folder save(Folder entity) {
         if(Objects.isNull(entity.getParentFolder()))
             throw new NotValidParamsException("Pasta precisa de uma raiz", ErrorCode.INVALID_PARAMS);

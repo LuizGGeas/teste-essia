@@ -9,4 +9,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "/folder")
 public class FolderController extends AbstractController<FolderService, Folder> {
+
+    @GetMapping("/root")
+    public ResponseEntity<Folder> getRootFolder() {
+        return ResponseEntity.ok(service.getRootFolder());
+    }
 }
