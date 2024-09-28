@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public abstract class AbstractController<S extends AbstractService<T>, T extends BaseEntity> {
 
     @Autowired
-    private S service;
+    protected S service;
 
     @GetMapping("/{id}")
     public ResponseEntity<T> get(@RequestParam Long id) {
