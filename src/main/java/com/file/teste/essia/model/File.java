@@ -18,6 +18,9 @@ public class File extends BaseEntity {
     @JoinColumn(name = "parent_folder_id", nullable = false)
     private Folder sourceFolder;
 
+    @Column(name = "file_content", nullable = true)
+    private String fileContent;
+
     @Override
     public Long getId() {
         return id;
