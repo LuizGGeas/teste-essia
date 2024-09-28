@@ -1,5 +1,6 @@
 package com.file.teste.essia.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class Folder extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "parent_folder_id")
+    @JsonIgnore
     private Folder parentFolder;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "parentFolder", orphanRemoval = true, cascade = CascadeType.ALL)
