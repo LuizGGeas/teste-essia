@@ -1,6 +1,7 @@
 package com.file.teste.essia.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "folder")
+@JsonIgnoreProperties(value = { "parentFolder" }, allowSetters = true)
 public class Folder extends BaseEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -18,7 +20,6 @@ public class Folder extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "parent_folder_id")
-    @JsonIgnore
     private Folder parentFolder;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "parentFolder", orphanRemoval = true, cascade = CascadeType.ALL)

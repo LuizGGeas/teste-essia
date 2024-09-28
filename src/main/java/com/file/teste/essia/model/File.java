@@ -2,11 +2,13 @@ package com.file.teste.essia.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 
 @Entity
 @Table(name = "file")
+@JsonIgnoreProperties(value = { "sourceFolder" }, allowSetters = true)
 public class File extends BaseEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -17,7 +19,6 @@ public class File extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "parent_folder_id", nullable = false)
-    @JsonIgnore
     private Folder sourceFolder;
 
     @Column(name = "file_content", nullable = true)
