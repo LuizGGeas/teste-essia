@@ -13,8 +13,8 @@ public abstract class AbstractController<S extends AbstractService<T>, T extends
     @Autowired
     protected S service;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<T> get(@RequestParam Long id) {
+    @GetMapping("/id/{id}")
+    public ResponseEntity<T> get(@PathVariable Long id) {
 
         return ResponseEntity.ok(service.getById(id));
     }
@@ -30,13 +30,13 @@ public abstract class AbstractController<S extends AbstractService<T>, T extends
         return ResponseEntity.ok(service.save(data));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<T> update(@RequestParam Long id, @RequestBody T data) {
+    @PutMapping("/id/{id}")
+    public ResponseEntity<T> update(@PathVariable Long id, @RequestBody T data) {
         return ResponseEntity.ok(service.update(id, data));
     }
 
-    @DeleteMapping("/id")
-    public ResponseEntity.BodyBuilder delete(@RequestParam Long id) {
+    @DeleteMapping("/id/{id}")
+    public ResponseEntity.BodyBuilder delete(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.ok();
     }
